@@ -19,16 +19,3 @@ public class BookingDTO {
     private String bookingStatus;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//  totalPrice: Double හෝ BigDecimal bookingStatus: String
