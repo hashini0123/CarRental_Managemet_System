@@ -1,4 +1,16 @@
 package edu.icet.repository;
 
+import edu.icet.model.dto.CustomerDTO;
+
+import java.util.List;
+
 public interface CustomerRepository {
+    boolean addCustomer(CustomerDTO customerDTO);
+
+    boolean updateCustomer(CustomerDTO customerDTO);
+
+    boolean deleteByID(String id);
+
+    List<CustomerDTO> getAll();
+
 }
