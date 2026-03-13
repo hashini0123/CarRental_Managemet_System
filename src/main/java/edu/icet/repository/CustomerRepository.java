@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface CustomerRepository {
-    boolean addCustomer(CustomerDTO customerDTO) throws SQLException;
+    boolean addCustomer(CustomerDTO customerDTO) ;
 
     boolean updateCustomer(CustomerDTO customerDTO);
 
