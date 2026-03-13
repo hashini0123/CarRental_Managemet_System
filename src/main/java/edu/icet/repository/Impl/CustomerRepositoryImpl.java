@@ -52,6 +52,21 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<CustomerDTO> getAll() {
-        return List.of();
+
+        String sql = "SELECT * FROM customer";
+
+        List<CustomerDTO> customerDTOList = jdbcTemplate.query(sql,((rs, rowNum) -> {
+
+            CustomerDTO customerDTO = new CustomerDTO();
+
+            customerDTO.setCustID(rs.getString(1));
+            customerDTO.setCustName(rs.getString(2));
+            customerDTO.setEmail(rs.getString(3));
+            customerDTO.setPassword(rs.getInt(4));
+            customerDTO.setContactNumber(rs.getInt(5));
+            return customerDTO;
+        }));
+
+        return customerDTOList;
     }
 }
