@@ -30,12 +30,24 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) {
-        return false;
+
+        String sql = "UPDATE customer SET custName=?, email=?, password=?, contactNumber=?, custID=?";
+
+        return jdbcTemplate.update(sql,
+                customerDTO.getCustID(),
+                customerDTO.getCustName(),
+                customerDTO.getEmail(),
+                customerDTO.getPassword(),
+                customerDTO.getContactNumber()
+        )>0;
     }
 
     @Override
     public boolean deleteByID(String id) {
-        return false;
+
+        String sql = "DELETE FROM customer  WHERE custID=? ";
+
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
