@@ -3,30 +3,33 @@ package edu.icet.controller;
 import edu.icet.model.dto.CustomerDTO;
 import edu.icet.service.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/customer")
 public class CustomerController {
 
     private final CustomerService customerService;
 
+    @PostMapping("/add")
     public boolean addCustomer(@RequestBody CustomerDTO customerDTO){
         return customerService.addCustomer(customerDTO);
     }
 
+    @PutMapping("/update")
     public boolean uppdateCustomer(@RequestBody CustomerDTO customerDTO){
         return customerService.updateCustomer(customerDTO);
     }
 
+    @DeleteMapping("@delete-by-id/{id}")
     public boolean deleteByID(String ID){
         return customerService.deleteByID(ID);
     }
 
+    @GetMapping
     public List<CustomerDTO> getAll(){
         return customerService.getAll();
     }
