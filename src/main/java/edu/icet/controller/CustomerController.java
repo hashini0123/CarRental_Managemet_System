@@ -24,12 +24,12 @@ public class CustomerController {
         return customerService.updateCustomer(customerDTO);
     }
 
-    @DeleteMapping("@delete-by-id/{id}")
+    @DeleteMapping("delete-by-id/{id}")
     public boolean deleteByID(@PathVariable String ID){
         return customerService.deleteByID(ID);
     }
 
-    @GetMapping
+    @GetMapping("/get")
     public List<CustomerDTO> getAll(){
         return customerService.getAll();
     }
