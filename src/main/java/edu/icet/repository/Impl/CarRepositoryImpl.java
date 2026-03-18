@@ -16,7 +16,16 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean addCar(CarDTO carDTO) {
-        return false;
+        String sql = "INSERT INTO cars VALUE(?,?,?,?,?,?,?)";
+        return jdbcTemplate.update(sql,
+                carDTO.getCarID(),
+                carDTO.getModel(),
+                carDTO.getBrand(),
+                carDTO.getFuelType(),
+                carDTO.getSeatingCapacity(),
+                carDTO.getDailyRate(),
+                carDTO.getStatus()
+                )>0;
     }
 
     @Override
