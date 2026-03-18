@@ -20,7 +20,7 @@ public class CustomerController {
     }
 
     @PutMapping("/update")
-    public boolean uppdateCustomer(@RequestBody CustomerDTO customerDTO){
+    public boolean updateCustomer(@RequestBody CustomerDTO customerDTO){
         return customerService.updateCustomer(customerDTO);
     }
 
