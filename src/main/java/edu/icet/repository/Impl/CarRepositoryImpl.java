@@ -18,7 +18,7 @@ public class CarRepositoryImpl implements CarRepository {
     public boolean addCar(CarDTO carDTO) {
         String sql = "INSERT INTO cars VALUE(?,?,?,?,?,?,?)";
         return jdbcTemplate.update(sql,
-                carDTO.getCarID(),
+                carDTO.getCarId(),
                 carDTO.getModel(),
                 carDTO.getBrand(),
                 carDTO.getFuelType(),
@@ -30,7 +30,16 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean updateCar(CarDTO carDTO) {
-        return false;
+        String sql = "UPDATE customer SET model=?, brand=?, fuleType=?, seatingCapacity=?, dailyRate=?, sttus=? WHERE carId=?";
+        return jdbcTemplate.update(sql,
+                carDTO.getCarId(),
+                carDTO.getModel(),
+                carDTO.getBrand(),
+                carDTO.getFuelType(),
+                carDTO.getSeatingCapacity(),
+                carDTO.getDailyRate(),
+                carDTO.getStatus()
+        )>0;
     }
 
     @Override
