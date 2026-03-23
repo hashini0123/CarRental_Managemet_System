@@ -30,7 +30,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean updateCar(CarDTO carDTO) {
-        String sql = "UPDATE customer SET model=?, brand=?, fuleType=?, seatingCapacity=?, dailyRate=?, sttus=? WHERE carId=?";
+        String sql = "UPDATE cars SET model=?, brand=?, fuleType=?, seatingCapacity=?, dailyRate=?, sttus=? WHERE carId=?";
         return jdbcTemplate.update(sql,
                 carDTO.getCarId(),
                 carDTO.getModel(),
@@ -44,11 +44,27 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+        String sql = "DELETE FROM cars WHERE carId=?";
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
     public List<CarDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM cars";
+
+        List<CarDTO> carDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
+
+            CarDTO carDTO = new CarDTO();
+            carDTO.setCarId(rs.getString(1));
+            carDTO.setModel(rs.getString(2));
+            carDTO.setBrand(rs.getString(3));
+            carDTO.setFuelType(rs.getString(4));
+            carDTO.setSeatingCapacity(rs.getInt(5));
+            carDTO.setDailyRate(rs.getDouble(6));
+            carDTO.setStatus(rs.getString(7));
+            return carDTO;
+        });
+
+        return carDTOList;
     }
 }
