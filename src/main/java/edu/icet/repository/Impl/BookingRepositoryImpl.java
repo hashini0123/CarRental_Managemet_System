@@ -2,13 +2,30 @@ package edu.icet.repository.Impl;
 
 import edu.icet.model.dto.BookingDTO;
 import edu.icet.repository.BookingRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+@RequiredArgsConstructor
 public class BookingRepositoryImpl implements BookingRepository {
+
+    private final JdbcTemplate jdbcTemplate;
+
     @Override
     public boolean addBook(BookingDTO bookingDTO) {
-        return false;
+        String sql ="INSERT INTO bookings VALUE (?,?,?,?,?,?)";
+        return jdbcTemplate.update(sql,
+                bookingDTO.getBookingID(),
+                bookingDTO.getCustID(),
+                bookingDTO.getCarID(),
+                bookingDTO.getStartDate(),
+                bookingDTO.getEndDate(),
+                bookingDTO.getTotalPrice(),
+                bookingDTO.getBookingStatus()
+                )>0;
     }
 
     @Override
