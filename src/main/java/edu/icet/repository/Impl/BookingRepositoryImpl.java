@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -53,6 +54,19 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public List<BookingDTO> getAll() {
 
-        return List.of();
+        String sql = "SELECT * FROM bookings";
+        List<BookingDTO> bookingDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
+            BookingDTO bookingDTO = new BookingDTO();
+            bookingDTO.setBookingID(rs.getString(1));
+            bookingDTO.setCustID(rs.getString(2));
+            bookingDTO.setCarID(rs.getString(3));
+            bookingDTO.setStartDate(LocalDate.parse(rs.getString(4)));
+            bookingDTO.setEndDate(LocalDate.parse(rs.getString(5)));
+            bookingDTO.setTotalPrice(Double.parseDouble(rs.getString(6)));
+            bookingDTO.setBookingStatus(rs.getString(7));
+            return bookingDTO;
+
+        });
+        return bookingDTOList;
     }
 }
