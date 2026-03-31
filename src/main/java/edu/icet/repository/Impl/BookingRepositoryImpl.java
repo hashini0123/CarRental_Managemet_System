@@ -52,6 +52,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     @Override
     public List<BookingDTO> getAll() {
+
         return List.of();
     }
 }
