@@ -30,12 +30,24 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     @Override
     public boolean updateBook(BookingDTO bookingDTO) {
-        return false;
+
+       String sql = "UPDATE bookings SET custId=?, carId=?, startDate=?, endDate=?, totalPrice=?, bookingStatus=?, bookingId=?";
+       return jdbcTemplate.update(sql,
+               bookingDTO.getBookingID(),
+               bookingDTO.getCustID(),
+               bookingDTO.getCarID(),
+               bookingDTO.getStartDate(),
+               bookingDTO.getEndDate(),
+               bookingDTO.getTotalPrice(),
+               bookingDTO.getBookingStatus()
+               )>0;
     }
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+
+        String sql  = "DELETE FROM bookings WHERE bookingId=?";
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
