@@ -40,7 +40,8 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+        String sql = "DELETE FROM payments WHERE paymentId=?";
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
