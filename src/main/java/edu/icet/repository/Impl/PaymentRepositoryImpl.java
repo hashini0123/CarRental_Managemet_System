@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -46,6 +47,19 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public List<PaymentDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM payments";
+
+        List<PaymentDTO> paymentDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
+
+            PaymentDTO  paymentDTO = new PaymentDTO();
+
+            paymentDTO.setPaymentID(rs.getString(1));
+            paymentDTO.setBookingID(rs.getString(2));
+            paymentDTO.setAmount(Double.parseDouble(rs.getString(3)));
+            paymentDTO.setPaymentDate(LocalDate.parse(rs.getString(4)));
+            paymentDTO.setPaymentMethod(rs.getString(5));
+            return paymentDTO;
+        });
+        return paymentDTOList;
     }
 }
