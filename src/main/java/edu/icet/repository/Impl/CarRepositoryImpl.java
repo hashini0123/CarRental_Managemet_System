@@ -30,7 +30,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean updateCar(CarDTO carDTO) {
-        String sql = "UPDATE cars SET model=?, brand=?, fuleType=?, seatingCapacity=?, dailyRate=?, sttus=? WHERE carId=?";
+        String sql = "UPDATE cars SET model=?, brand=?, fuleType=?, seatingCapacity=?, dailyRate=?, staus=? WHERE carId=?";
         return jdbcTemplate.update(sql,
                 carDTO.getCarId(),
                 carDTO.getModel(),
