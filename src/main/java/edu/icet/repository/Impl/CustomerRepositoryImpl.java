@@ -63,7 +63,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             customerDTO.setCustName(rs.getString(2));
             customerDTO.setEmail(rs.getString(3));
             customerDTO.setPassword(rs.getInt(4));
-            customerDTO.setContactNumber(rs.getInt(5));
+            customerDTO.setContactNumber(rs.getString(5));
             return customerDTO;
         }));
 

@@ -19,6 +19,6 @@ public class CustomerDTO {
 
     private int password;
 
-    private int contactNumber;
+    private String contactNumber;
 
 }
