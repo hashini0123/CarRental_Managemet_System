@@ -32,7 +32,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public boolean updateBook(BookingDTO bookingDTO) {
 
-       String sql = "UPDATE bookings SET custId=?, carId=?, startDate=?, endDate=?, totalPrice=?, bookingStatus=?, bookingId=?";
+       String sql = "UPDATE bookings SET custId=?, carId=?, startDate=?, endDate=?, totalPrice=?, bookingStatus=? WHERE bookingId=?";
        return jdbcTemplate.update(sql,
                bookingDTO.getBookingID(),
                bookingDTO.getCustID(),
