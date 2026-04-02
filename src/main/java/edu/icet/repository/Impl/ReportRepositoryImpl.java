@@ -1,4 +1,28 @@
 package edu.icet.repository.Impl;
 
-public class ReportRepositoryImpl {
+import edu.icet.model.dto.ReportDTO;
+import edu.icet.repository.ReportRepository;
+
+import java.util.List;
+
+public class ReportRepositoryImpl implements ReportRepository {
+    @Override
+    public boolean addReport(ReportDTO reportDTO) {
+        return false;
+    }
+
+    @Override
+    public boolean updateReport(ReportDTO reportDTO) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(String id) {
+        return false;
+    }
+
+    @Override
+    public List<ReportDTO> getAll() {
+        return List.of();
+    }
 }
