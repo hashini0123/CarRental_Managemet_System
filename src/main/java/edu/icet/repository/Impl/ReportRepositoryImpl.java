@@ -2,9 +2,11 @@ package edu.icet.repository.Impl;
 
 import edu.icet.model.dto.ReportDTO;
 import edu.icet.repository.ReportRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ReportRepositoryImpl implements ReportRepository {
     @Override
     public boolean addReport(ReportDTO reportDTO) {
