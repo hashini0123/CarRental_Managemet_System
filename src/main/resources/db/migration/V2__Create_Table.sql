@@ -49,3 +49,20 @@ CREATE TABLE payments (
         REFERENCES bookings(id)
         ON DELETE CASCADE
 );
+
+CREATE TABLE reports (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    report_type VARCHAR(100) NOT NULL,
+    generated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    generated_by BIGINT,
+    start_date DATE,
+    end_date DATE,
+    total_bookings INT DEFAULT 0,
+    total_revenue DECIMAL(10,2) DEFAULT 0.00,
+    report_status VARCHAR(50) DEFAULT 'GENERATED',
+
+    CONSTRAINT fk_report_user
+        FOREIGN KEY (generated_by)
+        REFERENCES users(id)
+        ON DELETE SET NULL
+);
