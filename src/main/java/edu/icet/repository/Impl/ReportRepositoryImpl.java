@@ -29,7 +29,7 @@ public class ReportRepositoryImpl implements ReportRepository {
     @Override
     public boolean updateReport(ReportDTO reportDTO) {
 
-        String sql = "UPDATE reports SET reportType=?; totalRentals=?, totalRevenus=?, utilizationRate=? ";
+        String sql = "UPDATE reports SET totalRentals=?, totalRevenus=?, utilizationRate=? WHERE reportType=? ";
         return jdbcTemplate.update(sql,
                 reportDTO.getReportType(),
                 reportDTO.getTotalRentals(),
@@ -41,11 +41,23 @@ public class ReportRepositoryImpl implements ReportRepository {
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+        String sql = "DELETE FROM reports WHERE reportType=?";
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
     public List<ReportDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM reports";
+
+        List<ReportDTO> reportDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
+
+            ReportDTO reportDTO = new ReportDTO();
+            reportDTO.setReportType(rs.getString(1));
+            reportDTO.setTotalRentals(Integer.parseInt(rs.getString(2)));
+            reportDTO.setTotalRevenue(Double.parseDouble(rs.getString(3)));
+            reportDTO.setUtilizationRate(Double.parseDouble(rs.getString(4)));
+            return reportDTO;
+        });
+        return reportDTOList;
     }
 }
