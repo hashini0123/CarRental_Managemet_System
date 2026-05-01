@@ -19,8 +19,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public boolean addCustomer(CustomerDTO customerDTO) {
         String sql = "INSERT INTO customer VALUES(?,?,?,?,?)";
            return jdbcTemplate.update(sql,
-                    customerDTO.getCustID(),
-                    customerDTO.getCustName(),
+                    customerDTO.getCustomerID(),
+                    customerDTO.getCustomerName(),
                     customerDTO.getEmail(),
                     customerDTO.getPassword(),
                     customerDTO.getContactNumber()
@@ -34,8 +34,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         String sql = "UPDATE customer SET custName=?, email=?, password=?, contactNumber=?,WHERE custID=?";
 
         return jdbcTemplate.update(sql,
-                customerDTO.getCustID(),
-                customerDTO.getCustName(),
+                customerDTO.getCustomerID(),
+                customerDTO.getCustomerName(),
                 customerDTO.getEmail(),
                 customerDTO.getPassword(),
                 customerDTO.getContactNumber()
@@ -59,8 +59,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
             CustomerDTO customerDTO = new CustomerDTO();
 
-            customerDTO.setCustID(rs.getString(1));
-            customerDTO.setCustName(rs.getString(2));
+            customerDTO.setCustomerID(rs.getString(1));
+            customerDTO.setCustomerName(rs.getString(2));
             customerDTO.setEmail(rs.getString(3));
             customerDTO.setPassword(rs.getInt(4));
             customerDTO.setContactNumber(rs.getString(5));
