@@ -20,7 +20,7 @@ public class BookingRepositoryImpl implements BookingRepository {
         String sql ="INSERT INTO bookings VALUE (?,?,?,?,?,?)";
         return jdbcTemplate.update(sql,
                 bookingDTO.getBookingID(),
-                bookingDTO.getCustID(),
+                bookingDTO.getCustomerID(),
                 bookingDTO.getCarID(),
                 bookingDTO.getStartDate(),
                 bookingDTO.getEndDate(),
@@ -35,7 +35,7 @@ public class BookingRepositoryImpl implements BookingRepository {
        String sql = "UPDATE bookings SET custId=?, carId=?, startDate=?, endDate=?, totalPrice=?, bookingStatus=? WHERE bookingId=?";
        return jdbcTemplate.update(sql,
                bookingDTO.getBookingID(),
-               bookingDTO.getCustID(),
+               bookingDTO.getCustomerID(),
                bookingDTO.getCarID(),
                bookingDTO.getStartDate(),
                bookingDTO.getEndDate(),
@@ -58,7 +58,7 @@ public class BookingRepositoryImpl implements BookingRepository {
         List<BookingDTO> bookingDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
             BookingDTO bookingDTO = new BookingDTO();
             bookingDTO.setBookingID(rs.getString(1));
-            bookingDTO.setCustID(rs.getString(2));
+            bookingDTO.setCustomerID(rs.getString(2));
             bookingDTO.setCarID(rs.getString(3));
             bookingDTO.setStartDate(LocalDate.parse(rs.getString(4)));
             bookingDTO.setEndDate(LocalDate.parse(rs.getString(5)));
