@@ -11,9 +11,9 @@ import lombok.ToString;
 @ToString
 public class CustomerDTO {
 
-    private String custID;
+    private String customerID;
 
-    private String custName;
+    private String customerName;
 
     private String email;
 
