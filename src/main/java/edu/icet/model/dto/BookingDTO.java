@@ -15,7 +15,7 @@ public class BookingDTO {
 
     private String bookingID;
 
-    private String customerID;
+    private String userID;
 
     private String carID;
 

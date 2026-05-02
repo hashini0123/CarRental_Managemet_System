@@ -9,11 +9,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CustomerDTO {
+public class UserDTO {
 
-    private String customerID;
+    private String userID;
 
-    private String customerName;
+    private String userName;
 
     private String email;
 
