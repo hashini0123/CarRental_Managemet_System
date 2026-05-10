@@ -11,17 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String model;
     private String brand;
     private String fuelType;
     private int seatingCapacity;
     private double dailyRate;
-
     private String status;
 }
