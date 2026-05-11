@@ -18,12 +18,9 @@ public class SecurityConfigaration {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/user/**").permitAll()
-                                .requestMatchers("/booking/**").permitAll()
-                                .requestMatchers("car/**").permitAll()
-                                .requestMatchers("payment/**").permitAll()
-                                .requestMatchers("report/**").permitAll()
+                                .requestMatchers("/user/**" , "/booking/**" , "/car/**" , "/payment/**" , "/report/**").permitAll()
 
+                                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                                 .anyRequest().authenticated()
                 );
         return http.build();
