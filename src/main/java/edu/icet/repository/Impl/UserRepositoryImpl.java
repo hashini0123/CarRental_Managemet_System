@@ -54,7 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         String sql = "SELECT * FROM user";
 
-        List<UserDTO> userDTOList = jdbcTemplate.query(sql,((rs, rowNum) -> {
+        List<UserDTO> userDTOList = jdbcTemplate.query(sql,(rs, rowNum) -> {
 
             UserDTO userDTO = new UserDTO();
 
@@ -64,7 +64,7 @@ public class UserRepositoryImpl implements UserRepository {
             userDTO.setPassword(rs.getInt(4));
             userDTO.setContactNumber(rs.getString(5));
             return userDTO;
-        }));
+        });
 
         return userDTOList;
     }
