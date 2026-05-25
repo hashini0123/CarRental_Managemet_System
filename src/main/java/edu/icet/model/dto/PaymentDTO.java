@@ -13,9 +13,9 @@ import java.time.LocalDate;
 @ToString
 public class PaymentDTO {
 
-    private String paymentID;
+    private Long paymentID;
 
-    private String bookingID;
+    private Long bookingID;
 
     private double amount;
 

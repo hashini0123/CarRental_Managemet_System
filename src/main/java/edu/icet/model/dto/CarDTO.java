@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class CarDTO {
-    private String carId;
+    private Long carId;
 
     private String model;
 
