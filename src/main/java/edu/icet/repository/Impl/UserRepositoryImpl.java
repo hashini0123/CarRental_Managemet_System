@@ -58,7 +58,7 @@ public class UserRepositoryImpl implements UserRepository {
 
             UserDTO userDTO = new UserDTO();
 
-            userDTO.setUserID(rs.getString(1));
+            userDTO.setUserID(rs.getLong(1));
             userDTO.setUserName(rs.getString(2));
             userDTO.setEmail(rs.getString(3));
             userDTO.setPassword(rs.getInt(4));

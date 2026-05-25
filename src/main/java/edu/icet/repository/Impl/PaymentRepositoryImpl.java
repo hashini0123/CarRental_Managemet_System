@@ -53,8 +53,8 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
             PaymentDTO  paymentDTO = new PaymentDTO();
 
-            paymentDTO.setPaymentID(rs.getString(1));
-            paymentDTO.setBookingID(rs.getString(2));
+            paymentDTO.setPaymentID(rs.getLong(1));
+            paymentDTO.setBookingID(rs.getLong(2));
             paymentDTO.setAmount(Double.parseDouble(rs.getString(3)));
             paymentDTO.setPaymentDate(LocalDate.parse(rs.getString(4)));
             paymentDTO.setPaymentMethod(rs.getString(5));

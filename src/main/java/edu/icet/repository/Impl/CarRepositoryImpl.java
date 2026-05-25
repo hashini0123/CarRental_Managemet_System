@@ -55,7 +55,7 @@ public class CarRepositoryImpl implements CarRepository {
         List<CarDTO> carDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
 
             CarDTO carDTO = new CarDTO();
-            carDTO.setCarId(rs.getString(1));
+            carDTO.setCarId(rs.getLong(1));
             carDTO.setModel(rs.getString(2));
             carDTO.setBrand(rs.getString(3));
             carDTO.setFuelType(rs.getString(4));
