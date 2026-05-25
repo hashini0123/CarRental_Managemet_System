@@ -57,9 +57,9 @@ public class BookingRepositoryImpl implements BookingRepository {
         String sql = "SELECT * FROM bookings";
         List<BookingDTO> bookingDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
             BookingDTO bookingDTO = new BookingDTO();
-            bookingDTO.setBookingID(rs.getString(1));
-            bookingDTO.setUserID(rs.getString(2));
-            bookingDTO.setCarID(rs.getString(3));
+            bookingDTO.setBookingID(rs.getLong(1));
+            bookingDTO.setUserID(rs.getLong(2));
+            bookingDTO.setCarID(rs.getLong(3));
             bookingDTO.setStartDate(LocalDate.parse(rs.getString(4)));
             bookingDTO.setEndDate(LocalDate.parse(rs.getString(5)));
             bookingDTO.setTotalPrice(Double.parseDouble(rs.getString(6)));
