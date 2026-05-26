@@ -31,7 +31,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!-- Fix: Changed spring-boot-starter-flyway to flyway-core -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
@@ -63,7 +62,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>
