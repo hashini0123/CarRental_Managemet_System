@@ -69,4 +69,17 @@ public class BookingRepositoryImpl implements BookingRepository {
         });
         return bookingDTOList;
     }
+
+    @Override
+    public boolean isCarAvailable(Long carId, LocalDate startDate, LocalDate endDate) {
+       String sql = "SELECT * FROM bookings WHERE carId=? AND booking_status != 'CANCELLED' AND(startDate <= ? AND endDate >=?)";
+
+       return jdbcTemplate.queryForObject(sql,
+               Integer.class,
+               carId,
+               startDate,
+               endDate
+       )>0;
+
+    }
 }
