@@ -19,6 +19,8 @@ public class UserDTO {
 
     private int password;
 
-    private String contactNumber;
+    private String role;
+
+    private String created_at;
 
 }
