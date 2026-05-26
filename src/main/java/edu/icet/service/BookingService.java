@@ -2,6 +2,7 @@ package edu.icet.service;
 
 import edu.icet.model.dto.BookingDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface BookingService
@@ -13,4 +14,10 @@ public interface BookingService
     boolean deleteById(String id);
 
     List<BookingDTO> getAll();
+
+    boolean isCarAvailable(
+            Long carId,
+            LocalDate startDate,
+            LocalDate endDate
+    );
 }
