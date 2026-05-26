@@ -6,6 +6,7 @@ import edu.icet.service.BookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -32,5 +33,10 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public List<BookingDTO> getAll() {
         return bookingRepository.getAll();
+    }
+
+    @Override
+    public boolean isCarAvailable(Long carId, LocalDate startDate, LocalDate endDate) {
+        return bookingRepository.isCarAvailable(carId, startDate, endDate);
     }
 }
