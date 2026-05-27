@@ -29,7 +29,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
     @Override
     public boolean updtePayment(PaymentDTO paymentDTO) {
-        String sql = "UPDATE payments SET bookingId=?, amount=?, paymentDate=?, paymentMehod=? WHERE paymentId=?";
+        String sql = "UPDATE payments SET booking_id=?, amount=?, paymentDate=?, paymentMethod=? WHERE payment_id=?";
         return jdbcTemplate.update(sql,
                 paymentDTO.getPaymentID(),
                 paymentDTO.getBookingID(),
