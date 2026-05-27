@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public boolean updateUser(UserDTO userDTO) {
 
-        String sql = "UPDATE user SET userName=?, email=?, password=?, role=? created_at=? WHERE userID=?";
+        String sql = "UPDATE user SET userName=?, email=?, password=?, role=? created_at=? WHERE user_id=?";
 
         return jdbcTemplate.update(sql,
                 userDTO.getUserID(),
@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public boolean deleteByID(String id) {
 
-        String sql = "DELETE FROM users  WHERE userID=? ";
+        String sql = "DELETE FROM users  WHERE user_id=? ";
 
         return jdbcTemplate.update(sql,id)>0;
     }
