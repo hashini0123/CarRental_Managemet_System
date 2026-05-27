@@ -29,7 +29,7 @@ public class ReportRepositoryImpl implements ReportRepository {
     @Override
     public boolean updateReport(ReportDTO reportDTO) {
 
-        String sql = "UPDATE reports SET totalRentals=?, totalRevenus=?, utilizationRate=? WHERE reportType=? ";
+        String sql = "UPDATE reports SET totalRentals=?, totalRevenue=?, utilizationRate=? WHERE reportType=? ";
         return jdbcTemplate.update(sql,
                 reportDTO.getReportType(),
                 reportDTO.getTotalRentals(),
