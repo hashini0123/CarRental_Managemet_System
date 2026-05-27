@@ -30,7 +30,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean updateCar(CarDTO carDTO) {
-        String sql = "UPDATE cars SET model=?, brand=?, fuleType=?, seatingCapacity=?, dailyRate=?, staus=? WHERE carId=?";
+        String sql = "UPDATE cars SET model=?, brand=?, fuelType=?, seatingCapacity=?, dailyRate=?, staus=? WHERE car_id=?";
         return jdbcTemplate.update(sql,
                 carDTO.getCarId(),
                 carDTO.getModel(),
@@ -44,7 +44,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public boolean deleteById(String id) {
-        String sql = "DELETE FROM cars WHERE carId=?";
+        String sql = "DELETE FROM cars WHERE car_id=?";
         return jdbcTemplate.update(sql,id)>0;
     }
 
