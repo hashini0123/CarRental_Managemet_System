@@ -17,37 +17,37 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     @Override
     public boolean addBook(BookingDTO bookingDTO) {
-        String sql ="INSERT INTO bookings VALUE (?,?,?,?,?,?)";
+        String sql ="INSERT INTO bookings VALUE (?,?,?,?,?,?,?)";
         return jdbcTemplate.update(sql,
-                bookingDTO.getBookingID(),
-                bookingDTO.getUserID(),
-                bookingDTO.getCarID(),
-                bookingDTO.getStartDate(),
-                bookingDTO.getEndDate(),
-                bookingDTO.getTotalPrice(),
-                bookingDTO.getBookingStatus()
+                bookingDTO.getId(),
+                bookingDTO.getUserId(),
+                bookingDTO.getCarId(),
+                bookingDTO.getStart_date(),
+                bookingDTO.getEnd_date(),
+                bookingDTO.getTotal_price(),
+                bookingDTO.getBooking_status()
                 )>0;
     }
 
     @Override
     public boolean updateBook(BookingDTO bookingDTO) {
 
-       String sql = "UPDATE bookings SET userId=?, carId=?, startDate=?, endDate=?, totalPrice=?, bookingStatus=? WHERE bookingId=?";
+       String sql = "UPDATE bookings SET user_id=?, car_id=?, start_date=?, end_date=?, total_price=?, booking_status=? WHERE id=?";
        return jdbcTemplate.update(sql,
-               bookingDTO.getBookingID(),
-               bookingDTO.getUserID(),
-               bookingDTO.getCarID(),
-               bookingDTO.getStartDate(),
-               bookingDTO.getEndDate(),
-               bookingDTO.getTotalPrice(),
-               bookingDTO.getBookingStatus()
+               bookingDTO.getUserId(),
+               bookingDTO.getCarId(),
+               bookingDTO.getStart_date(),
+               bookingDTO.getEnd_date(),
+               bookingDTO.getTotal_price(),
+               bookingDTO.getBooking_status(),
+               bookingDTO.getId()
                )>0;
     }
 
     @Override
     public boolean deleteById(String id) {
 
-        String sql  = "DELETE FROM bookings WHERE bookingId=?";
+        String sql  = "DELETE FROM bookings WHERE id=?";
         return jdbcTemplate.update(sql,id)>0;
     }
 
@@ -57,13 +57,13 @@ public class BookingRepositoryImpl implements BookingRepository {
         String sql = "SELECT * FROM bookings";
         List<BookingDTO> bookingDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
             BookingDTO bookingDTO = new BookingDTO();
-            bookingDTO.setBookingID(rs.getLong(1));
-            bookingDTO.setUserID(rs.getLong(2));
-            bookingDTO.setCarID(rs.getLong(3));
-            bookingDTO.setStartDate(LocalDate.parse(rs.getString(4)));
-            bookingDTO.setEndDate(LocalDate.parse(rs.getString(5)));
-            bookingDTO.setTotalPrice(Double.parseDouble(rs.getString(6)));
-            bookingDTO.setBookingStatus(rs.getString(7));
+            bookingDTO.setId(rs.getLong(1));
+            bookingDTO.setUserId(rs.getLong(2));
+            bookingDTO.setCarId(rs.getLong(3));
+            bookingDTO.setStart_date(LocalDate.parse(rs.getString(4)));
+            bookingDTO.setEnd_date(LocalDate.parse(rs.getString(5)));
+            bookingDTO.setTotal_price(Double.parseDouble(rs.getString(6)));
+            bookingDTO.setBooking_status(rs.getString(7));
             return bookingDTO;
 
         });
@@ -72,7 +72,7 @@ public class BookingRepositoryImpl implements BookingRepository {
 
     @Override
     public boolean isCarAvailable(Long carId, LocalDate startDate, LocalDate endDate) {
-       String sql = "SELECT * FROM bookings WHERE carId=? AND booking_status != 'CANCELLED' AND(startDate <= ? AND endDate >=?)";
+       String sql = "SELECT * FROM bookings WHERE carId=? AND booking_status != 'CANCELLED' AND(start_date <= ? AND end_date >=?)";
 
        return jdbcTemplate.queryForObject(sql,
                Integer.class,
