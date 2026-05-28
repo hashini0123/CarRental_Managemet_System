@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface UserService {
     boolean addUser(UserDTO userDTO);
+
     boolean updateUser(UserDTO userDTO);
 
     boolean deleteByID(String id);
