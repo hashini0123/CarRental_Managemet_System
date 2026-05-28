@@ -41,7 +41,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean deleteByID(String id) {
-        return false;
+        String sql = "DELETE FROM users WHERE id=?";
+        return jdbcTemplate.update(sql,id)>0;
     }
 
     @Override
