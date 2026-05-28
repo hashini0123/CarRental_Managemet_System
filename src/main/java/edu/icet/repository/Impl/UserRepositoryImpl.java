@@ -47,6 +47,17 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<UserDTO> getAll() {
-        return List.of();
+        String sql = "SELECT *FROM users";
+        List<UserDTO> userDTOList = jdbcTemplate.query(sql,(rs, rowNum) -> {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setId(rs.getLong(1));
+            userDTO.setName(rs.getString(2));
+            userDTO.setEmail(rs.getString(3));
+            userDTO.setPassword(rs.getInt(4));
+            userDTO.setRole(rs.getString(5));
+            userDTO.setCreated_at(rs.getString(6));
+            return userDTO;
+        });
+        return userDTOList;
     }
 }
