@@ -13,18 +13,18 @@ import java.time.LocalDate;
 @ToString
 public class BookingDTO {
 
-    private Long bookingID;
+    private Long id;
 
-    private Long userID;
+    private Long userId;
 
-    private Long carID;
+    private Long carId;
 
-    private LocalDate startDate;
+    private LocalDate start_date;
 
-    private LocalDate endDate;
+    private LocalDate end_date;
 
-    private double totalPrice;
+    private double total_price;
 
-    private String bookingStatus;
+    private String booking_status;
 
 }
