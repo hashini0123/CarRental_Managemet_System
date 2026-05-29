@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteByID(String ID) {
-        return userRepository.deleteByID(ID);
+    public boolean deleteByID(String id) {
+        return userRepository.deleteByID(id);
     }
 
     @Override
