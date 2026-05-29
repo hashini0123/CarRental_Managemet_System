@@ -16,25 +16,23 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean addUser(UserDTO userDTO) {
-        String sql = "INSERT INTO users VALUE (?,?,?,?,?,?)";
+        String sql = "INSERT INTO users(name,email,password,role) VALUE (?,?,?,?)";
         return jdbcTemplate.update(sql,
-                userDTO.getId(),
                 userDTO.getName(),
                 userDTO.getEmail(),
-                userDTO.getRole(),
-                userDTO.getCreated_at()
+                userDTO.getPassword(),
+                userDTO.getRole()
                 )>0;
     }
 
     @Override
     public boolean updateUser(UserDTO userDTO) {
-        String sql = "UPDATE users SET name=?, email=?, password=?, role=?, create_at=? WHERE id=?";
+        String sql = "UPDATE users SET name=?, email=?, password=?, role=? WHERE id=?";
         return jdbcTemplate.update(sql,
                 userDTO.getName(),
                 userDTO.getEmail(),
                 userDTO.getPassword(),
                 userDTO.getRole(),
-                userDTO.getCreated_at(),
                 userDTO.getId()
                 )>0;
     }
