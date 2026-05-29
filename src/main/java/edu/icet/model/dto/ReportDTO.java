@@ -13,7 +13,7 @@ public class ReportDTO {
 
     private String reportType;
 
-    private int totalRentals;
+    private int totalBookings;
 
     private double totalRevenue;
 
