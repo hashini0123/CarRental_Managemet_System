@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @ToString
 public class ReportDTO {
 
+    private Long id;
     private String reportType;
     private int generatedBy;
     private LocalDate startDate;
