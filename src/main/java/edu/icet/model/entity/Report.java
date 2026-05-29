@@ -16,4 +16,5 @@ public class Report {
     private LocalDate endDate;
     private int totalBookings;
     private double totalRevenue;
+
 }
