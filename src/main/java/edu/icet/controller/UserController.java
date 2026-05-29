@@ -25,8 +25,8 @@ public class UserController {
     }
 
     @DeleteMapping("delete-by-id/{id}")
-    public boolean deleteByID(@PathVariable String ID){
-        return userService.deleteByID(ID);
+    public boolean deleteByID(@PathVariable String id){
+        return userService.deleteByID(id);
     }
 
     @GetMapping("/get")
