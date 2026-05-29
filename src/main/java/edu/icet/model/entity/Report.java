@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Report {
     private String reportType;
-    private int totalRentals;
+    private int totalBookings;
     private double totalRevenue;
     private double utilizationRate;
 }
