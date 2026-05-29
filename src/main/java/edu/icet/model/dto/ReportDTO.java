@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,11 +14,10 @@ import lombok.ToString;
 public class ReportDTO {
 
     private String reportType;
-
+    private int generatedBy;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int totalBookings;
-
     private double totalRevenue;
-
-    private double utilizationRate;
 
 }
