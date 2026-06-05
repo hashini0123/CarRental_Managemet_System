@@ -15,13 +15,15 @@ public class ReportRepositoryImpl implements ReportRepository {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public boolean addReport(ReportDTO reportDTO) {
-        String sql = "INSERT INTO reports VALUES (?,?,?,?)";
+    public boolean addReport (ReportDTO reportDTO) {
+        String sql = "INSERT INTO reports (report_type,generated_by,start_date,end_date, total_bookings,total_revenue) VALUES (?,?,?,?,?,?)";
         return jdbcTemplate.update(sql,
                 reportDTO.getReportType(),
-                reportDTO.getTotalRentals(),
-                reportDTO.getTotalRevenue(),
-                reportDTO.getUtilizationRate()
+                reportDTO.getGeneratedBy(),
+                reportDTO.getStartDate(),
+                reportDTO.getEndDate(),
+                reportDTO.getTotalBookings(),
+                reportDTO.getTotalRevenue()
                 )>0;
 
     }
@@ -29,19 +31,22 @@ public class ReportRepositoryImpl implements ReportRepository {
     @Override
     public boolean updateReport(ReportDTO reportDTO) {
 
-        String sql = "UPDATE reports SET totalRentals=?, totalRevenue=?, utilizationRate=? WHERE reportType=? ";
+        String sql = "UPDATE reports SET report_type=?, generated_by=?, start_date=?, end_date=?, total_bookings=?, total_revenue=? WHERE id=? ";
         return jdbcTemplate.update(sql,
                 reportDTO.getReportType(),
-                reportDTO.getTotalRentals(),
+                reportDTO.getGeneratedBy(),
+                reportDTO.getStartDate(),
+                reportDTO.getEndDate(),
+                reportDTO.getTotalBookings(),
                 reportDTO.getTotalRevenue(),
-                reportDTO.getUtilizationRate()
+                reportDTO.getId()
         )>0;
 
     }
 
     @Override
     public boolean deleteById(String id) {
-        String sql = "DELETE FROM reports WHERE reportType=?";
+        String sql = "DELETE FROM reports WHERE id=?";
         return jdbcTemplate.update(sql,id)>0;
     }
 
@@ -52,10 +57,12 @@ public class ReportRepositoryImpl implements ReportRepository {
         List<ReportDTO> reportDTOList = jdbcTemplate.query(sql, (rs, rowNum) -> {
 
             ReportDTO reportDTO = new ReportDTO();
-            reportDTO.setReportType(rs.getString(1));
-            reportDTO.setTotalRentals(Integer.parseInt(rs.getString(2)));
-            reportDTO.setTotalRevenue(Double.parseDouble(rs.getString(3)));
-            reportDTO.setUtilizationRate(Double.parseDouble(rs.getString(4)));
+            reportDTO.setReportType(rs.getString("report_type"));
+            reportDTO.setGeneratedBy(rs.getInt("generated_by"));
+            reportDTO.setStartDate(rs.getDate("start_date").toLocalDate());
+            reportDTO.setEndDate(rs.getDate("end_date").toLocalDate());
+            reportDTO.setTotalBookings(rs.getInt("total_bookings"));
+            reportDTO.setTotalRevenue(rs.getDouble("total_revenue"));
             return reportDTO;
         });
         return reportDTOList;
